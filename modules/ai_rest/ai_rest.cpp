@@ -3,16 +3,13 @@
 #include "core/io/json.h"
 
 String AIRest::request_api(const String &url, const Dictionary &headers, const uint8_t *body, const int body_size) {
-    Error err = Error::OK;
+    /*Error err = Error::OK;
     Ref<HTTPClient> http;
-    http.instantiate();
+    http = HTTPClient::create();
 
-    // Connect to host
-    String host = url.get_slicec('/', 2);
-    err = http->connect_to_host("https://" + host);
+    err = http->connect_to_host("api.example.com", 80);
     if (err != Error::OK) return "Connection error";
 
-    // Wait for connection
     while (http->get_status() == HTTPClient::STATUS_CONNECTING || 
            http->get_status() == HTTPClient::STATUS_RESOLVING) {
         http->poll();
@@ -23,12 +20,11 @@ String AIRest::request_api(const String &url, const Dictionary &headers, const u
         return "Connection failed";
     }
 
-    // Prepare headers
     Vector<String> header_list;
     for (const Variant *key = headers.next(nullptr); key; key = headers.next(key)) {
         header_list.push_back(String(*key) + ": " + String(headers[*key]));
     }
-
+   
     // Make request
     err = http->request(HTTPClient::METHOD_POST, url, header_list, body, body_size);
     if (err != Error::OK) return "Request failed";
@@ -53,8 +49,9 @@ String AIRest::request_api(const String &url, const Dictionary &headers, const u
             }
         }
         response.parse_utf8((const char *)body_buffer.ptr(), body_buffer.size());
-    }
+    }*/
 
+    String response = "Hi";
     return response;
 }
 
