@@ -6,5 +6,7 @@ Import("env_modules")
 
 env_ai_rest = env_modules.Clone()
 
-# Add all the C++ source files in this module
-env_ai_rest.add_source_files(env.modules_sources, "*.cpp")
+module_obj = []
+
+env_ai_rest.add_source_files(module_obj, "*.cpp")
+env.modules_sources += module_obj

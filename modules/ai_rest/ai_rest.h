@@ -1,26 +1,21 @@
 #ifndef AI_REST_H
 #define AI_REST_H
 
-#include "core/referenc.h"
-#include "core/array.h"
+#include "core/object/ref_counted.h"
 
-class AIRest : public Reference {
-    GDCLASS(AIRest, Reference);
+class AIRest : public RefCounted {
+    GDCLASS(AIRest, RefCounted);
 
 protected:
     static void _bind_methods();
 
 public:
-    // Constructor.
+    String request_api(const String &url, const Dictionary &headers, const uint8_t *body, const int body_size);
+    String request_chatgpt(const String &api_key, const Array &messages);
+    String request_stable_diffusion(const String &api_key, const String &prompt);
+    String request_elevenlabs(const String &api_key, const String &text, const String &voice_id);
+    
     AIRest();
-
-    // Example method: perform a REST request (synchronously for now)
-    String request_api(const String &url, const Dictionary &headers, const String &body);
-
-    // You might add more methods for each API, e.g.:
-    // String request_chatgpt(const String &json_payload);
-    // String request_stable_diffusion(const String &json_payload);
-    // String request_elevenlabs(const String &json_payload);
 };
 
 #endif // AI_REST_H
